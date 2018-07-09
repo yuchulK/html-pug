@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>変換ツール</title>
+	</head>
+	<div id="btn" onclick="start()">ぼたん</div>
+	<textarea id="area"></textarea>
+	<style>
+	#area {
+		width:  800px;
+		height: 100vh;
+		background: #333;
+		color:  #FFF;
+	}
+</style>
+<!--20170709-->
+	<script>
+		var area = document.getElementById('area');
+		var btn = document.getElementById('btn');
+		function start(){
+			var areaValue = area.value;
+			var phpRep = areaValue.replace( /\?>/g,'phpEnd');
+			var phpRep = phpRep.replace( /<\?php/g,'phpFirst');
+			var htmlRep = phpRep.replace(/<\/.+[>]/g,'');
+
+			var tagInput = ['iframe','header','footer','img','figure','ul','input','form','a','i','div','li><','p','h2','h1','h3'];
+			for(var i=0; i < tagInput.length; i++) {
+				var reg = new RegExp('<'+ tagInput[i],'g');
+				var htmlRep = htmlRep.replace(reg,tagInput[i] + '(');
+			}
+			var htmlRep = htmlRep.replace(/</g,'');
+			var htmlRep = htmlRep.replace(/">/g,'")\n');
+			var htmlRep = htmlRep.replace(/>/g,'\n| ');
+			var htmlRep = htmlRep.replace(/"UTF-8"/g,'\'UTF-8\'');
+			var phpClear = htmlRep.replace(/phpFirst/g,'<\?php');
+			var phpClear = phpClear.replace(/phpEnd/g,'\?>');
+			var phpClear = phpClear.replace(/="<\?/g,'!= "<\?');
+			area.value = phpClear;
+		}
+	</script>
+</html>
