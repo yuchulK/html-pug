@@ -1,42 +1,102 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<meta charset="UTF-8">
-	<title>変換ツール</title>
-	</head>
-	<div id="btn" onclick="start()">ぼたん</div>
-	<textarea id="area"></textarea>
-	<style>
-	#area {
-		width:  800px;
-		height: 100vh;
-		background: #333;
-		color:  #FFF;
-	}
+  <meta charset="UTF-8">
+  <title>変換ツール</title>
+  </head>
+  <div id="btn" onclick="start()">ぼたん</div>
+  <textarea id="before"></textarea><textarea id="after"></textarea>
+  <style>
+	  html,body,ul,input,a,p {
+	    margin: 0;
+	    padding: 0;
+	    box-sizing: border-box;
+	  }
+	  #before, #after {
+	    border: solid 1px #333;
+	    width:  50%;
+	    min-height: 100vh;
+	    display: inline-block;
+	    vertical-align: top;
+	    font-size : 16px;
+	    margin-top: 50px;
+	    padding: 20px 20px 70px 20px;
+	    box-sizing: border-box;
+	    height: 100vh;
+	    overflow: scroll;
+	  }
+	  #before {
+	    background: #333;
+	    color:  #FFF;
+	  }
+	  .head {
+	    width: 100%;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    z-index: 99999;
+	    height: 50px;
+	    transform: translate3d(0, 0, 0);
+	  }
+	  #btn {
+	    width: 200px;
+	    border: 10px;
+	  }
 </style>
 <!--20170709-->
-	<script>
-		var area = document.getElementById('area');
-		var btn = document.getElementById('btn');
-		function start(){
-			var areaValue = area.value;
-			var phpRep = areaValue.replace( /\?>/g,'phpEnd');
-			var phpRep = phpRep.replace( /<\?php/g,'phpFirst');
-			var htmlRep = phpRep.replace(/<\/.+[>]/g,'');
+  <script>
+    var before = document.getElementById('before');
+		var after = document.getElementById('after');
+    var btn = document.getElementById('btn');
+    function start(){
+      var beforeValue = before.value;
+      var phpRep = beforeValue.replace( /\?>/g,'phpEnd');
+      var phpRep = phpRep.replace( /<\?php/g,'phpFirst');
+      var htmlRep = phpRep.replace(/<\/.+[>]/g,'');
 
-			var tagInput = ['iframe','header','footer','img','figure','ul','input','form','a','i','div','li><','p','h2','h1','h3'];
-			for(var i=0; i < tagInput.length; i++) {
-				var reg = new RegExp('<'+ tagInput[i],'g');
-				var htmlRep = htmlRep.replace(reg,tagInput[i] + '(');
+      /*phpFirstとphpendの間を囲んで変換されないようにブロック*/
+			var loop = htmlRep.match(/phpFirst/g);
+			var target = new Array(loop.length);
+			for(var i = 0; i < loop.length; i++){
+				var baseStart = htmlRep.indexOf('phpFirst');
+				console.log('phpFirst'+baseStart);
+				var baseEnd = htmlRep.indexOf('phpEnd')+6;
+				console.log('phpEnd'+baseEnd);
+				target[i] = htmlRep.substring(baseStart, baseEnd);
+				console.log(target);
+				var htmlRep = htmlRep.replace(new RegExp(target[i]),'target');
+				document.getElementById('before').value = htmlRep;
+				var htmlRep = document.getElementById('before').value;
+				// var htmlRep = htmlRep.replace(new RegExp(target[i]), 'target');
+				// var htmlRep2 = htmlRep;
+				console.log(htmlRep);
 			}
-			var htmlRep = htmlRep.replace(/</g,'');
-			var htmlRep = htmlRep.replace(/">/g,'")\n');
-			var htmlRep = htmlRep.replace(/>/g,'\n| ');
-			var htmlRep = htmlRep.replace(/"UTF-8"/g,'\'UTF-8\'');
-			var phpClear = htmlRep.replace(/phpFirst/g,'<\?php');
-			var phpClear = phpClear.replace(/phpEnd/g,'\?>');
-			var phpClear = phpClear.replace(/="<\?/g,'!= "<\?');
-			area.value = phpClear;
-		}
-	</script>
+       // console.log('target入り'+htmlRep);
+
+      var tagInput = ['iframe','header','footer','img','figure','ul','input','form','a','i','div','li><','p','h2','h1','h3','select','option'];
+      for(var i=0; i < tagInput.length; i++) {
+        var reg = new RegExp('<'+ tagInput[i],'g');
+        var htmlRep = htmlRep.replace(reg,tagInput[i] + '(');
+      }
+      var reg = new RegExp('phpFirst' + 'phpEnd')
+      var htmlRep = htmlRep.replace(/</g,'');
+      var htmlRep = htmlRep.replace(/">/g,'")\n');
+      var htmlRep = htmlRep.replace(/>/g,'\n| ');
+      var htmlRep = htmlRep.replace(/"UTF-8"/g,'\'UTF-8\'');
+      //ここでphp内の囲んだ記述を戻す
+      if(i == loop.length-1) {
+	      for(var j =0; j < loop.length; j++){
+	      	htmlRep = htmlRep.replace(target, new RegExp(target[j]));
+	      }
+	      beforeValue = htmlRep;
+	    }
+
+
+      var phpClear = htmlRep.replace(/phpFirst/g,'<\?php');
+      var phpClear = phpClear.replace(/phpEnd/g,'\?>');
+      var phpClear = phpClear.replace(/="<\?/g,'!= "<\?');
+      var phpClear = phpClear.replace(/>" </g, '>" "<');
+      after.value = phpClear;
+    }
+  </script>
 </html>
