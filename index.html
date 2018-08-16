@@ -5,190 +5,8 @@
   <title>変換ツール</title>
   </head>
   <div id="btn" onclick="start()">ぼたん</div>
-  <textarea id="before"><!DOCTYPE html>
-<html dir="ltr" lang="ja">
-  <head><?php include ( $_SERVER['DOCUMENT_ROOT'] . "/_views/_template/header.html"); "UTF-8" ?>
-  </head>
-  <body>
-    <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M555T3N" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    <header class="header">
-      <figure class="headerLogo"><a href="/"><img src="/_assets/images/enjinlogo.gif"></a></figure>
-      <ul class="headerBigMenu">
-        <li><a href="/list/new/">集団訴訟を作る</a></li>
-        <li><a href="/list/">集団訴訟を探す</a></li>
-      </ul>
-      <div class="headerRightArea">
-        <ul class="headerSmallMenu">
-          <li><a href="/about/">enjinとは</a></li>
-          <li><a href="/aboutLawyer/">弁護士の方はこちら</a></li>
-        </ul>
-        <div class="headerActionArea"><?php if (!isset($_SESSION['id']) || !isset($_SESSION['position'])): ?><a class="headerActionBtn" href="/login/">会員登録 or ログイン</a><?php else: ?><a class="headerActionBtn" href="/mypage/"><i class="fas fa-home"></i>マイページ</a><a class="headerActionBtn" href="/login/logout/"><i class="fas fa-sign-out-alt"></i>ログアウト</a><?php endif; ?></div>
-      </div>
-      <script>
-        function formEnter(){
-          if( window.event.keyCode == 13 ){
-            document.headerSearch.submit();
-          }
-        };
-      </script>
-    </header>
-    <div class="about">
-      <div class="aboutTop aboutBorderAuto">
-        <figure class="aboutRight"><img src="/_assets/images/topImg.jpg"></figure>
-        <div class="aboutLeft">
-          <h2 class="aboutTitle">集団訴訟を<br>もっと身近に。</h2>
-          <p class="aboutText">enjin（円陣）は集団被害者と弁護士を繋ぐ<br>集団訴訟プラットフォームです。</p>
-        </div>
-      </div>
-      <div class="aboutSecond">
-        <div class="aboutSecondContets aboutBorderAuto">
-          <h2 class="aboutSecondTitle">それ、集団訴訟になるかも。</h2>
-          <div class="aboutSecondBottom">
-            <div class="aboutSecondBox">
-              <figure class="aboutSecondImg"><img src="/_assets/images/icon01.jpg"></figure>
-              <p class="aboutSecondSubtextTop">被害者があなた以外にも居るなら</p>
-              <p class="aboutSecondSubtextBottom">それは集団です</p>
-            </div>
-            <div class="aboutSecondBox">
-              <figure class="aboutSecondImg"><img src="/_assets/images/icon02.jpg"></figure>
-              <p class="aboutSecondSubtextTop">少し傷ついたのなら</p>
-              <p class="aboutSecondSubtextBottom">立派な被害者です</p>
-            </div>
-            <div class="aboutSecondBox">
-              <figure class="aboutSecondImg"><img src="/_assets/images/icon03.jpg"></figure>
-              <p class="aboutSecondSubtextTop">被害者に関係なく集団訴訟は</p>
-              <p class="aboutSecondSubtextBottom">起こすことができます</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="aboutThird aboutBorderAuto">
-        <div class="aboutThirdRight">
-          <h2 class="aboutThirdTitle aboutmin">同じ被害者を見つけることができます。</h2>
-          <div class="appearImg"></div>
-          <p class="aboutThirdText">enjinでは集団訴訟を起こすためのプロジェクトを立ち上げることができます。<br>そこではユーザー自らが同じ被害者を募ったり、参加したりすることができます。</p><a class="btn02" href="/list/new/">プロジェクトを作る</a>
-        </div>
-        <figure class="aboutThirdLeft"><img src="/_assets/images/img01.jpg"></figure>
-      </div>
-      <div class="aboutFourth">
-        <div class="aboutFourthContents aboutBorderAuto">
-          <figure class="aboutFourthRight"><img src="/_assets/images/img02.jpg"></figure>
-          <div class="aboutFourthLeft">
-            <h2 class="aboutFourthTitle">被害には様々なものがあります</h2>
-            <div class="appearImg"></div>
-            <p class="aboutFourthText">集団訴訟を起こされる被害というと、詐欺や健康被害などのイメージがありますが、実は身近なアレも立派な被害です。<br>少しでもおかしいなと思ったらenjinでプロジェクトを探してみよう。</p><a class="btn02" href="/list/">プロジェクトを探す</a>
-          </div>
-        </div>
-      </div>
-      <div class="aboutFifth aboutBorderAuto">
-        <figure class="aboutFifthLeft"><img src="/_assets/images/img03.jpg"></figure>
-        <div class="aboutFifthRight">
-          <h2 class="aboutFifthTitle">弁護士費用はみんなで割り勘</h2>
-          <div class="appearImg"></div>
-          <p class="aboutFifthText">弁護士を雇う際の費用は被害者同士で割り勘します。もし弁護士費用が高すぎると思ったら途中辞退も大丈夫。まずは集団訴訟プロジェクトに参加して「被害にあった」という意思表示から始めよう。</p>
-        </div>
-      </div>
-      <div class="aboutSixth">
-        <div class="aboutBorderAuto">
-          <h2 class="aboutSixthTitle">enjinでできること</h2>
-          <div class="aboutSixthBottom">
-            <div class="aboutSixthBox">
-              <figure class="aboutSixthImg"><img src="/_assets/images/img04.jpg"></figure>
-              <p class="aboutSixthSubtextTop">仲間を募ることができます</p>
-              <div class="appearImg"></div>
-              <p class="aboutSixthSubtextBottom">enjinは集団訴訟に特化したプラットフォームサービスなので、被害者同士のコミュニケーションを円滑に行うことができます。</p>
-            </div>
-            <div class="aboutSixthBox">
-              <figure class="aboutSixthImg"><img src="/_assets/images/img05.jpg"></figure>
-              <p class="aboutSixthSubtextTop">弁護士からオファーが来ます</p>
-              <div class="appearImg"></div>
-              <p class="aboutSixthSubtextBottom">enjinは弁護士から被害者に対してオファーが届きます。今まで面倒だった弁護士探しがenjinなら解決します。</p>
-            </div>
-            <div class="aboutSixthBox">
-              <figure class="aboutSixthImg"><img src="/_assets/images/img06.jpg"></figure>
-              <p class="aboutSixthSubtextTop">寄付を募ることができます</p>
-              <div class="appearImg"></div>
-              <p class="aboutSixthSubtextBottom">enjinでは弁護士費用の寄付機能を現在開発中です。今まで弁護士費用がネックだった訴訟がenjinなら起こすことができます。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="qa section">
-      <div class="page">
-        <div class="title">よくあるご質問</div>
-        <ul class="qaList"><?php echo $page01; ?></ul>
-      </div>
-    </div>
-    <footer class="footer"><?php include ( $_SERVER['DOCUMENT_ROOT'] . '/_views/_template/footer.html'); ?></footer>
-    <script>
-      window.addEventListener("load", function(e) {
-        var img01 = document.getElementsByClassName('aboutThirdLeft');
-        var img02 = document.getElementsByClassName('aboutFourthRight');
-        var img03 = document.getElementsByClassName('aboutFifthLeft');
-        var img04 = document.getElementsByClassName('aboutSixthImg');
-        //- var img05 = document.getElementsByClassName('');
-        //- var img06 = document.getElementsByClassName('');
-      
-      
-        if (window.matchMedia('(max-width: 600px)').matches) {
-          img01[0].style.display = "none";
-          img02[0].style.display = "none";
-          img03[0].style.display = "none";
-          img04[0].style.display = "none";
-          img04[1].style.display = "none";
-          img04[2].style.display = "none";
-          changeImg();
-        }
-      });
-      function changeImg(){
-        var appearImg = document.getElementsByClassName('appearImg');
-        var img = ['/_assets/images/img01.jpg', '/_assets/images/img02.jpg', '/_assets/images/img03.jpg', '/_assets/images/img04.jpg', '/_assets/images/img05.jpg', '/_assets/images/img06.jpg'];
-        var figureOb = [];
-        var imgOb = [];
-        console.log(appearImg.length);
-        for(var i = 0; i < appearImg.length; i++){
-          figureOb[i] = document.createElement('figure');
-          imgOb[i] = document.createElement('img');
-      
-          figureOb[i].setAttribute('class', 'appearFigure');
-          imgOb[i].setAttribute('src', img[i]);
-      
-          imgOb[i].style.width = "100%";
-          imgOb[i].style.marginBottom = "20px";
-      
-          figureOb[i].appendChild(imgOb[i]);
-          appearImg[i].appendChild(figureOb[i]);
-        }
-      }
-      
-      
-      
-      var qaList = document.getElementsByClassName('qaList');
-      var qaListIndex = document.getElementsByClassName('qaListIndex');
-      var qaQues = document.getElementsByClassName('qaQues');
-      for(var e=0; e< qaList.length; e++){
-        var qaTitleList = qaList[e].querySelectorAll('.qaQues');
-        var indexList = qaListIndex[e];
-        for(var i=0; i< qaTitleList.length; i++){
-          var aCreate = document.createElement('a');
-          var liCreate = document.createElement('li');
-          aCreate.innerHTML = qaTitleList[i].innerHTML;
-          aCreate.setAttribute('class','qaListIndexItem');
-          liCreate.appendChild(aCreate);
-          indexList.appendChild(liCreate);
-        }
-      }
-      var qaListIndexItem = document.getElementsByClassName('qaListIndexItem');
-      for(var i=0; i < qaQues.length; i++){
-        qaQues[i].setAttribute('id','l'+ i);
-        qaListIndexItem[i].setAttribute("href",'#l'+ i);
-      }
-    </script>
-  </body>
-</html></textarea><textarea id="after"></textarea>
+  <textarea id="before">
+  </textarea><textarea id="after"></textarea>
   <style>
 	  html,body,ul,input,a,p {
 	    margin: 0;
@@ -231,23 +49,36 @@
   var after = document.getElementById('after');
   function start(){
     var beforeValue = document.getElementById('before').value;
+
     var phpLength = beforeValue.match(/<\?php/g).length;
     var phpArea = new Array(phpLength);
+
     for(var i = 0; i < phpLength; i++){
       var phpStart = beforeValue.indexOf('<\?php');//<?探す
       var phpEnd = beforeValue.indexOf('\?>')+2;//?>探す
       phpArea[i] = beforeValue.substring(phpStart,phpEnd);//phpArea[i]に文章を格納する
       var beforeValue = beforeValue.replace(phpArea[i],'phpArea');//文章をphpAreaに置換
       if(i == phpLength-1) {
-
-        var htmlLength = beforeValue.match(/</g).length;
+        //もしscriptタグが含まれていたら置換
+        if ( beforeValue.match(/script/g)) {
+          var scriptLength = beforeValue.match(/<script>/g).length;
+          var scriptArea = new Array(scriptLength);
+          for(var m = 0; m < scriptLength; m++){
+            var scriptStart = beforeValue.indexOf('<script>');
+            var scriptEnd = beforeValue.indexOf('<\/script>')+9;
+            scriptArea[m] = beforeValue.substring(scriptStart, scriptEnd);
+            var beforeValue = beforeValue.replace(scriptArea[m], 'scriptArea');
+          }
+        }
+        var beforeValue = beforeValue.replace(/phpArea>/g, '"phpArea">'); //phpが２つ続いた時に""で囲む
+        var htmlLength = beforeValue.match(/</g).length; //htmlを探す
         var htmlArea = new Array(htmlLength);
         for(var k = 0; k < htmlLength; k++) {
           var htmlStart = beforeValue.indexOf('<');//<探す
           var htmlEnd = beforeValue.indexOf('>')+1;//>探す
           htmlArea[k] = beforeValue.substring(htmlStart,htmlEnd);//phpArea[i]に文章を格納する
-          console.log(htmlArea[k]);
           var beforeValue = beforeValue.replace(htmlArea[k],'htmlArea');//文章をphpAreaに置換
+
           var endSearch = htmlArea[k].indexOf('<\/');
           if(endSearch == 0) {
             htmlArea[k] = htmlArea[k].replace(htmlArea[k],'');
@@ -261,16 +92,26 @@
               htmlArea[k] = htmlArea[k].replace(' ','(');
             }
           }
+                    // if(k == 199){
+                    //   break;
+                    // }
         }
 
         for(var l = 0; l < htmlLength; l++) {
           beforeValue = beforeValue.replace('htmlArea',htmlArea[l]);//置換していたものを戻す
+          // if(l==300){
+          //   break;
+          // }
         }
-       for(var j = 0; j < phpLength; j++){//phpfirst分回す
+
+        for(var j = 0; j < phpLength; j++){//phpfirst分回す
           phpArea[j] = phpArea[j].replace(/"UTF-8"/g,'\'UTF-8\'');
           beforeValue = beforeValue.replace('phpArea',phpArea[j]);//置換していたものを戻す
         }
-          after.innerHTML = beforeValue;//元にもどす       
+        for(var n =0; n < scriptLength; n++){
+          beforeValue = beforeValue.replace('scriptArea', scriptArea[n]);//scriptも元に戻す
+        }
+          after.innerHTML = beforeValue;//元にもどす
       }
     }
   }
