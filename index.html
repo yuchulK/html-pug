@@ -2,13 +2,17 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>変換ツール</title>
+  <title>pug変換ツール</title>
   </head>
-  <div id="btn" onclick="start()">ぼたん</div>
+  <header class="header">
+    <figure class="Img"><img src="pugimg.png"></figure>
+    <div class="title">HTML→Pug変換ツール</div>
+    <div id="btn" onclick="start()">変換</div>
+  </header>
   <textarea id="before">
   </textarea><textarea id="after"></textarea>
   <style>
-	  html,body,ul,input,a,p {
+	  html,body,ul,input,a,p,figure {
 	    margin: 0;
 	    padding: 0;
 	    box-sizing: border-box;
@@ -20,7 +24,7 @@
 	    display: inline-block;
 	    vertical-align: top;
 	    font-size : 16px;
-	    margin-top: 50px;
+	    margin-top: 65px;
 	    padding: 20px 20px 70px 20px;
 	    box-sizing: border-box;
 	    height: 100vh;
@@ -30,7 +34,7 @@
 	    background: #333;
 	    color:  #FFF;
 	  }
-	  .head {
+	  .header {
 	    width: 100%;
 	    position: fixed;
 	    top: 0;
@@ -38,11 +42,31 @@
 	    z-index: 99999;
 	    height: 50px;
 	    transform: translate3d(0, 0, 0);
+      display: flex;
+      padding: 20px 0px 10px 30px;
 	  }
 	  #btn {
-	    width: 200px;
+	    width: 30px;
 	    border: 10px;
+      border: 1px solid #b9b9b9;
+      background: #eee;
+      border-radius: 5px;
+      padding: 5px 15px;
+      height: 25px;
+      margin-left: 20px;
 	  }
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    .Img {
+      width: 80px;
+      padding-top: 9px;
+    }
+    .Img img{
+      width: 100%;
+    }
 </style>
 <script>
 
@@ -119,3 +143,5 @@
 </script>
 
 </html>
+
+
